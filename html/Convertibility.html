@@ -1,0 +1,2469 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >Convertibility</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Keyword"
+      >module</a
+      ><a name="7"
+      > </a
+      ><a name="8" href="Convertibility.html#1" class="Module"
+      >Convertibility</a
+      ><a name="22"
+      > </a
+      ><a name="23" class="Keyword"
+      >where</a
+      ><a name="28"
+      >
+
+</a
+      ><a name="30" class="Keyword"
+      >open</a
+      ><a name="34"
+      > </a
+      ><a name="35" class="Keyword"
+      >import</a
+      ><a name="41"
+      > </a
+      ><a name="42" href="Syntax.html#1" class="Module"
+      >Syntax</a
+      ><a name="48"
+      > </a
+      ><a name="49" class="Keyword"
+      >public</a
+      ><a name="55"
+      >
+
+
+</a
+      ><a name="58" class="Comment"
+      >-- &#946;-&#951;-equivalence.</a
+      ><a name="77"
+      >
+
+</a
+      ><a name="79" class="Keyword"
+      >infix</a
+      ><a name="84"
+      > </a
+      ><a name="85" class="Number"
+      >4</a
+      ><a name="86"
+      > </a
+      ><a name="87" href="Convertibility.html#98" class="Datatype Operator"
+      >_&#8801;&#7517;&#7505;_</a
+      ><a name="92"
+      >
+</a
+      ><a name="93" class="Keyword"
+      >data</a
+      ><a name="97"
+      > </a
+      ><a name="98" href="Convertibility.html#98" class="Datatype Operator"
+      >_&#8801;&#7517;&#7505;_</a
+      ><a name="103"
+      > </a
+      ><a name="104" class="Symbol"
+      >:</a
+      ><a name="105"
+      > </a
+      ><a name="106" class="Symbol"
+      >&#8704;</a
+      ><a name="107"
+      > </a
+      ><a name="108" class="Symbol"
+      >{</a
+      ><a name="109" href="Convertibility.html#109" class="Bound"
+      >A</a
+      ><a name="110"
+      > </a
+      ><a name="111" href="Convertibility.html#111" class="Bound"
+      >&#915;</a
+      ><a name="112" class="Symbol"
+      >}</a
+      ><a name="113"
+      > </a
+      ><a name="114" class="Symbol"
+      >&#8594;</a
+      ><a name="115"
+      > </a
+      ><a name="116" href="Convertibility.html#111" class="Bound"
+      >&#915;</a
+      ><a name="117"
+      > </a
+      ><a name="118" href="Syntax.html#437" class="Datatype Operator"
+      >&#8866;</a
+      ><a name="119"
+      > </a
+      ><a name="120" href="Convertibility.html#109" class="Bound"
+      >A</a
+      ><a name="121"
+      > </a
+      ><a name="122" class="Symbol"
+      >&#8594;</a
+      ><a name="123"
+      > </a
+      ><a name="124" href="Convertibility.html#111" class="Bound"
+      >&#915;</a
+      ><a name="125"
+      > </a
+      ><a name="126" href="Syntax.html#437" class="Datatype Operator"
+      >&#8866;</a
+      ><a name="127"
+      > </a
+      ><a name="128" href="Convertibility.html#109" class="Bound"
+      >A</a
+      ><a name="129"
+      > </a
+      ><a name="130" class="Symbol"
+      >&#8594;</a
+      ><a name="131"
+      > </a
+      ><a name="132" class="PrimitiveType"
+      >Set</a
+      ><a name="135"
+      > </a
+      ><a name="136" class="Keyword"
+      >where</a
+      ><a name="141"
+      >
+  </a
+      ><a name="144" href="Convertibility.html#144" class="InductiveConstructor"
+      >refl&#8801;&#7517;&#7505;</a
+      ><a name="151"
+      >  </a
+      ><a name="153" class="Symbol"
+      >:</a
+      ><a name="154"
+      > </a
+      ><a name="155" class="Symbol"
+      >&#8704;</a
+      ><a name="156"
+      > </a
+      ><a name="157" class="Symbol"
+      >{</a
+      ><a name="158" href="Convertibility.html#158" class="Bound"
+      >A</a
+      ><a name="159"
+      > </a
+      ><a name="160" href="Convertibility.html#160" class="Bound"
+      >&#915;</a
+      ><a name="161" class="Symbol"
+      >}</a
+      ><a name="162"
+      > </a
+      ><a name="163" class="Symbol"
+      >{</a
+      ><a name="164" href="Convertibility.html#164" class="Bound"
+      >d</a
+      ><a name="165"
+      > </a
+      ><a name="166" class="Symbol"
+      >:</a
+      ><a name="167"
+      > </a
+      ><a name="168" href="Convertibility.html#160" class="Bound"
+      >&#915;</a
+      ><a name="169"
+      > </a
+      ><a name="170" href="Syntax.html#437" class="Datatype Operator"
+      >&#8866;</a
+      ><a name="171"
+      > </a
+      ><a name="172" href="Convertibility.html#158" class="Bound"
+      >A</a
+      ><a name="173" class="Symbol"
+      >}</a
+      ><a name="174"
+      > </a
+      ><a name="175" class="Symbol"
+      >&#8594;</a
+      ><a name="176"
+      > </a
+      ><a name="177" href="Convertibility.html#164" class="Bound"
+      >d</a
+      ><a name="178"
+      > </a
+      ><a name="179" href="Convertibility.html#98" class="Datatype Operator"
+      >&#8801;&#7517;&#7505;</a
+      ><a name="182"
+      > </a
+      ><a name="183" href="Convertibility.html#164" class="Bound"
+      >d</a
+      ><a name="184"
+      >
+
+  </a
+      ><a name="188" href="Convertibility.html#188" class="InductiveConstructor"
+      >trans&#8801;&#7517;&#7505;</a
+      ><a name="196"
+      > </a
+      ><a name="197" class="Symbol"
+      >:</a
+      ><a name="198"
+      > </a
+      ><a name="199" class="Symbol"
+      >&#8704;</a
+      ><a name="200"
+      > </a
+      ><a name="201" class="Symbol"
+      >{</a
+      ><a name="202" href="Convertibility.html#202" class="Bound"
+      >A</a
+      ><a name="203"
+      > </a
+      ><a name="204" href="Convertibility.html#204" class="Bound"
+      >&#915;</a
+      ><a name="205" class="Symbol"
+      >}</a
+      ><a name="206"
+      > </a
+      ><a name="207" class="Symbol"
+      >{</a
+      ><a name="208" href="Convertibility.html#208" class="Bound"
+      >d</a
+      ><a name="209"
+      > </a
+      ><a name="210" href="Convertibility.html#210" class="Bound"
+      >d&#8242;</a
+      ><a name="212"
+      > </a
+      ><a name="213" href="Convertibility.html#213" class="Bound"
+      >d&#8243;</a
+      ><a name="215"
+      > </a
+      ><a name="216" class="Symbol"
+      >:</a
+      ><a name="217"
+      > </a
+      ><a name="218" href="Convertibility.html#204" class="Bound"
+      >&#915;</a
+      ><a name="219"
+      > </a
+      ><a name="220" href="Syntax.html#437" class="Datatype Operator"
+      >&#8866;</a
+      ><a name="221"
+      > </a
+      ><a name="222" href="Convertibility.html#202" class="Bound"
+      >A</a
+      ><a name="223" class="Symbol"
+      >}</a
+      ><a name="224"
+      > </a
+      ><a name="225" class="Symbol"
+      >&#8594;</a
+      ><a name="226"
+      > </a
+      ><a name="227" href="Convertibility.html#208" class="Bound"
+      >d</a
+      ><a name="228"
+      > </a
+      ><a name="229" href="Convertibility.html#98" class="Datatype Operator"
+      >&#8801;&#7517;&#7505;</a
+      ><a name="232"
+      > </a
+      ><a name="233" href="Convertibility.html#210" class="Bound"
+      >d&#8242;</a
+      ><a name="235"
+      > </a
+      ><a name="236" class="Symbol"
+      >&#8594;</a
+      ><a name="237"
+      > </a
+      ><a name="238" href="Convertibility.html#210" class="Bound"
+      >d&#8242;</a
+      ><a name="240"
+      > </a
+      ><a name="241" href="Convertibility.html#98" class="Datatype Operator"
+      >&#8801;&#7517;&#7505;</a
+      ><a name="244"
+      > </a
+      ><a name="245" href="Convertibility.html#213" class="Bound"
+      >d&#8243;</a
+      ><a name="247"
+      > </a
+      ><a name="248" class="Symbol"
+      >&#8594;</a
+      ><a name="249"
+      > </a
+      ><a name="250" href="Convertibility.html#208" class="Bound"
+      >d</a
+      ><a name="251"
+      > </a
+      ><a name="252" href="Convertibility.html#98" class="Datatype Operator"
+      >&#8801;&#7517;&#7505;</a
+      ><a name="255"
+      > </a
+      ><a name="256" href="Convertibility.html#213" class="Bound"
+      >d&#8243;</a
+      ><a name="258"
+      >
+
+  </a
+      ><a name="262" href="Convertibility.html#262" class="InductiveConstructor"
+      >sym&#8801;&#7517;&#7505;</a
+      ><a name="268"
+      >   </a
+      ><a name="271" class="Symbol"
+      >:</a
+      ><a name="272"
+      > </a
+      ><a name="273" class="Symbol"
+      >&#8704;</a
+      ><a name="274"
+      > </a
+      ><a name="275" class="Symbol"
+      >{</a
+      ><a name="276" href="Convertibility.html#276" class="Bound"
+      >A</a
+      ><a name="277"
+      > </a
+      ><a name="278" href="Convertibility.html#278" class="Bound"
+      >&#915;</a
+      ><a name="279" class="Symbol"
+      >}</a
+      ><a name="280"
+      > </a
+      ><a name="281" class="Symbol"
+      >{</a
+      ><a name="282" href="Convertibility.html#282" class="Bound"
+      >d</a
+      ><a name="283"
+      > </a
+      ><a name="284" href="Convertibility.html#284" class="Bound"
+      >d&#8242;</a
+      ><a name="286"
+      > </a
+      ><a name="287" class="Symbol"
+      >:</a
+      ><a name="288"
+      > </a
+      ><a name="289" href="Convertibility.html#278" class="Bound"
+      >&#915;</a
+      ><a name="290"
+      > </a
+      ><a name="291" href="Syntax.html#437" class="Datatype Operator"
+      >&#8866;</a
+      ><a name="292"
+      > </a
+      ><a name="293" href="Convertibility.html#276" class="Bound"
+      >A</a
+      ><a name="294" class="Symbol"
+      >}</a
+      ><a name="295"
+      > </a
+      ><a name="296" class="Symbol"
+      >&#8594;</a
+      ><a name="297"
+      > </a
+      ><a name="298" href="Convertibility.html#282" class="Bound"
+      >d</a
+      ><a name="299"
+      > </a
+      ><a name="300" href="Convertibility.html#98" class="Datatype Operator"
+      >&#8801;&#7517;&#7505;</a
+      ><a name="303"
+      > </a
+      ><a name="304" href="Convertibility.html#284" class="Bound"
+      >d&#8242;</a
+      ><a name="306"
+      > </a
+      ><a name="307" class="Symbol"
+      >&#8594;</a
+      ><a name="308"
+      > </a
+      ><a name="309" href="Convertibility.html#284" class="Bound"
+      >d&#8242;</a
+      ><a name="311"
+      > </a
+      ><a name="312" href="Convertibility.html#98" class="Datatype Operator"
+      >&#8801;&#7517;&#7505;</a
+      ><a name="315"
+      > </a
+      ><a name="316" href="Convertibility.html#282" class="Bound"
+      >d</a
+      ><a name="317"
+      >
+
+
+  </a
+      ><a name="322" class="Comment"
+      >-- Congruences.</a
+      ><a name="337"
+      >
+
+  </a
+      ><a name="341" href="Convertibility.html#341" class="InductiveConstructor"
+      >cong&#8801;&#7517;&#7505;lam</a
+      ><a name="351"
+      >  </a
+      ><a name="353" class="Symbol"
+      >:</a
+      ><a name="354"
+      > </a
+      ><a name="355" class="Symbol"
+      >&#8704;</a
+      ><a name="356"
+      > </a
+      ><a name="357" class="Symbol"
+      >{</a
+      ><a name="358" href="Convertibility.html#358" class="Bound"
+      >A</a
+      ><a name="359"
+      > </a
+      ><a name="360" href="Convertibility.html#360" class="Bound"
+      >B</a
+      ><a name="361"
+      > </a
+      ><a name="362" href="Convertibility.html#362" class="Bound"
+      >&#915;</a
+      ><a name="363" class="Symbol"
+      >}</a
+      ><a name="364"
+      > </a
+      ><a name="365" class="Symbol"
+      >{</a
+      ><a name="366" href="Convertibility.html#366" class="Bound"
+      >d</a
+      ><a name="367"
+      > </a
+      ><a name="368" href="Convertibility.html#368" class="Bound"
+      >d&#8242;</a
+      ><a name="370"
+      > </a
+      ><a name="371" class="Symbol"
+      >:</a
+      ><a name="372"
+      > </a
+      ><a name="373" href="Convertibility.html#362" class="Bound"
+      >&#915;</a
+      ><a name="374"
+      > </a
+      ><a name="375" href="Stack.html#128" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="376"
+      > </a
+      ><a name="377" href="Convertibility.html#358" class="Bound"
+      >A</a
+      ><a name="378"
+      > </a
+      ><a name="379" href="Syntax.html#437" class="Datatype Operator"
+      >&#8866;</a
+      ><a name="380"
+      > </a
+      ><a name="381" href="Convertibility.html#360" class="Bound"
+      >B</a
+      ><a name="382" class="Symbol"
+      >}</a
+      ><a name="383"
+      > </a
+      ><a name="384" class="Symbol"
+      >&#8594;</a
+      ><a name="385"
+      >
+                </a
+      ><a name="402" href="Convertibility.html#366" class="Bound"
+      >d</a
+      ><a name="403"
+      > </a
+      ><a name="404" href="Convertibility.html#98" class="Datatype Operator"
+      >&#8801;&#7517;&#7505;</a
+      ><a name="407"
+      > </a
+      ><a name="408" href="Convertibility.html#368" class="Bound"
+      >d&#8242;</a
+      ><a name="410"
+      > </a
+      ><a name="411" class="Symbol"
+      >&#8594;</a
+      ><a name="412"
+      > </a
+      ><a name="413" href="Syntax.html#508" class="InductiveConstructor"
+      >lam</a
+      ><a name="416"
+      > </a
+      ><a name="417" href="Convertibility.html#366" class="Bound"
+      >d</a
+      ><a name="418"
+      > </a
+      ><a name="419" href="Convertibility.html#98" class="Datatype Operator"
+      >&#8801;&#7517;&#7505;</a
+      ><a name="422"
+      > </a
+      ><a name="423" href="Syntax.html#508" class="InductiveConstructor"
+      >lam</a
+      ><a name="426"
+      > </a
+      ><a name="427" href="Convertibility.html#368" class="Bound"
+      >d&#8242;</a
+      ><a name="429"
+      >
+
+  </a
+      ><a name="433" href="Convertibility.html#433" class="InductiveConstructor"
+      >cong&#8801;&#7517;&#7505;app</a
+      ><a name="443"
+      >  </a
+      ><a name="445" class="Symbol"
+      >:</a
+      ><a name="446"
+      > </a
+      ><a name="447" class="Symbol"
+      >&#8704;</a
+      ><a name="448"
+      > </a
+      ><a name="449" class="Symbol"
+      >{</a
+      ><a name="450" href="Convertibility.html#450" class="Bound"
+      >A</a
+      ><a name="451"
+      > </a
+      ><a name="452" href="Convertibility.html#452" class="Bound"
+      >B</a
+      ><a name="453"
+      > </a
+      ><a name="454" href="Convertibility.html#454" class="Bound"
+      >&#915;</a
+      ><a name="455" class="Symbol"
+      >}</a
+      ><a name="456"
+      > </a
+      ><a name="457" class="Symbol"
+      >{</a
+      ><a name="458" href="Convertibility.html#458" class="Bound"
+      >d</a
+      ><a name="459"
+      > </a
+      ><a name="460" href="Convertibility.html#460" class="Bound"
+      >d&#8242;</a
+      ><a name="462"
+      > </a
+      ><a name="463" class="Symbol"
+      >:</a
+      ><a name="464"
+      > </a
+      ><a name="465" href="Convertibility.html#454" class="Bound"
+      >&#915;</a
+      ><a name="466"
+      > </a
+      ><a name="467" href="Syntax.html#437" class="Datatype Operator"
+      >&#8866;</a
+      ><a name="468"
+      > </a
+      ><a name="469" href="Convertibility.html#450" class="Bound"
+      >A</a
+      ><a name="470"
+      > </a
+      ><a name="471" href="Syntax.html#239" class="InductiveConstructor Operator"
+      >&#8658;</a
+      ><a name="472"
+      > </a
+      ><a name="473" href="Convertibility.html#452" class="Bound"
+      >B</a
+      ><a name="474" class="Symbol"
+      >}</a
+      ><a name="475"
+      > </a
+      ><a name="476" class="Symbol"
+      >{</a
+      ><a name="477" href="Convertibility.html#477" class="Bound"
+      >e</a
+      ><a name="478"
+      > </a
+      ><a name="479" href="Convertibility.html#479" class="Bound"
+      >e&#8242;</a
+      ><a name="481"
+      > </a
+      ><a name="482" class="Symbol"
+      >:</a
+      ><a name="483"
+      > </a
+      ><a name="484" href="Convertibility.html#454" class="Bound"
+      >&#915;</a
+      ><a name="485"
+      > </a
+      ><a name="486" href="Syntax.html#437" class="Datatype Operator"
+      >&#8866;</a
+      ><a name="487"
+      > </a
+      ><a name="488" href="Convertibility.html#450" class="Bound"
+      >A</a
+      ><a name="489" class="Symbol"
+      >}</a
+      ><a name="490"
+      > </a
+      ><a name="491" class="Symbol"
+      >&#8594;</a
+      ><a name="492"
+      >
+                </a
+      ><a name="509" href="Convertibility.html#458" class="Bound"
+      >d</a
+      ><a name="510"
+      > </a
+      ><a name="511" href="Convertibility.html#98" class="Datatype Operator"
+      >&#8801;&#7517;&#7505;</a
+      ><a name="514"
+      > </a
+      ><a name="515" href="Convertibility.html#460" class="Bound"
+      >d&#8242;</a
+      ><a name="517"
+      > </a
+      ><a name="518" class="Symbol"
+      >&#8594;</a
+      ><a name="519"
+      > </a
+      ><a name="520" href="Convertibility.html#477" class="Bound"
+      >e</a
+      ><a name="521"
+      > </a
+      ><a name="522" href="Convertibility.html#98" class="Datatype Operator"
+      >&#8801;&#7517;&#7505;</a
+      ><a name="525"
+      > </a
+      ><a name="526" href="Convertibility.html#479" class="Bound"
+      >e&#8242;</a
+      ><a name="528"
+      > </a
+      ><a name="529" class="Symbol"
+      >&#8594;</a
+      ><a name="530"
+      > </a
+      ><a name="531" href="Syntax.html#552" class="InductiveConstructor"
+      >app</a
+      ><a name="534"
+      > </a
+      ><a name="535" href="Convertibility.html#458" class="Bound"
+      >d</a
+      ><a name="536"
+      > </a
+      ><a name="537" href="Convertibility.html#477" class="Bound"
+      >e</a
+      ><a name="538"
+      > </a
+      ><a name="539" href="Convertibility.html#98" class="Datatype Operator"
+      >&#8801;&#7517;&#7505;</a
+      ><a name="542"
+      > </a
+      ><a name="543" href="Syntax.html#552" class="InductiveConstructor"
+      >app</a
+      ><a name="546"
+      > </a
+      ><a name="547" href="Convertibility.html#460" class="Bound"
+      >d&#8242;</a
+      ><a name="549"
+      > </a
+      ><a name="550" href="Convertibility.html#479" class="Bound"
+      >e&#8242;</a
+      ><a name="552"
+      >
+
+  </a
+      ><a name="556" href="Convertibility.html#556" class="InductiveConstructor"
+      >cong&#8801;&#7517;&#7505;pair</a
+      ><a name="567"
+      > </a
+      ><a name="568" class="Symbol"
+      >:</a
+      ><a name="569"
+      > </a
+      ><a name="570" class="Symbol"
+      >&#8704;</a
+      ><a name="571"
+      > </a
+      ><a name="572" class="Symbol"
+      >{</a
+      ><a name="573" href="Convertibility.html#573" class="Bound"
+      >A</a
+      ><a name="574"
+      > </a
+      ><a name="575" href="Convertibility.html#575" class="Bound"
+      >B</a
+      ><a name="576"
+      > </a
+      ><a name="577" href="Convertibility.html#577" class="Bound"
+      >&#915;</a
+      ><a name="578" class="Symbol"
+      >}</a
+      ><a name="579"
+      > </a
+      ><a name="580" class="Symbol"
+      >{</a
+      ><a name="581" href="Convertibility.html#581" class="Bound"
+      >d</a
+      ><a name="582"
+      > </a
+      ><a name="583" href="Convertibility.html#583" class="Bound"
+      >d&#8242;</a
+      ><a name="585"
+      > </a
+      ><a name="586" class="Symbol"
+      >:</a
+      ><a name="587"
+      > </a
+      ><a name="588" href="Convertibility.html#577" class="Bound"
+      >&#915;</a
+      ><a name="589"
+      > </a
+      ><a name="590" href="Syntax.html#437" class="Datatype Operator"
+      >&#8866;</a
+      ><a name="591"
+      > </a
+      ><a name="592" href="Convertibility.html#573" class="Bound"
+      >A</a
+      ><a name="593" class="Symbol"
+      >}</a
+      ><a name="594"
+      > </a
+      ><a name="595" class="Symbol"
+      >{</a
+      ><a name="596" href="Convertibility.html#596" class="Bound"
+      >e</a
+      ><a name="597"
+      > </a
+      ><a name="598" href="Convertibility.html#598" class="Bound"
+      >e&#8242;</a
+      ><a name="600"
+      > </a
+      ><a name="601" class="Symbol"
+      >:</a
+      ><a name="602"
+      > </a
+      ><a name="603" href="Convertibility.html#577" class="Bound"
+      >&#915;</a
+      ><a name="604"
+      > </a
+      ><a name="605" href="Syntax.html#437" class="Datatype Operator"
+      >&#8866;</a
+      ><a name="606"
+      > </a
+      ><a name="607" href="Convertibility.html#575" class="Bound"
+      >B</a
+      ><a name="608" class="Symbol"
+      >}</a
+      ><a name="609"
+      > </a
+      ><a name="610" class="Symbol"
+      >&#8594;</a
+      ><a name="611"
+      >
+                </a
+      ><a name="628" href="Convertibility.html#581" class="Bound"
+      >d</a
+      ><a name="629"
+      > </a
+      ><a name="630" href="Convertibility.html#98" class="Datatype Operator"
+      >&#8801;&#7517;&#7505;</a
+      ><a name="633"
+      > </a
+      ><a name="634" href="Convertibility.html#583" class="Bound"
+      >d&#8242;</a
+      ><a name="636"
+      > </a
+      ><a name="637" class="Symbol"
+      >&#8594;</a
+      ><a name="638"
+      > </a
+      ><a name="639" href="Convertibility.html#596" class="Bound"
+      >e</a
+      ><a name="640"
+      > </a
+      ><a name="641" href="Convertibility.html#98" class="Datatype Operator"
+      >&#8801;&#7517;&#7505;</a
+      ><a name="644"
+      > </a
+      ><a name="645" href="Convertibility.html#598" class="Bound"
+      >e&#8242;</a
+      ><a name="647"
+      > </a
+      ><a name="648" class="Symbol"
+      >&#8594;</a
+      ><a name="649"
+      > </a
+      ><a name="650" href="Syntax.html#600" class="InductiveConstructor"
+      >pair</a
+      ><a name="654"
+      > </a
+      ><a name="655" href="Convertibility.html#581" class="Bound"
+      >d</a
+      ><a name="656"
+      > </a
+      ><a name="657" href="Convertibility.html#596" class="Bound"
+      >e</a
+      ><a name="658"
+      > </a
+      ><a name="659" href="Convertibility.html#98" class="Datatype Operator"
+      >&#8801;&#7517;&#7505;</a
+      ><a name="662"
+      > </a
+      ><a name="663" href="Syntax.html#600" class="InductiveConstructor"
+      >pair</a
+      ><a name="667"
+      > </a
+      ><a name="668" href="Convertibility.html#583" class="Bound"
+      >d&#8242;</a
+      ><a name="670"
+      > </a
+      ><a name="671" href="Convertibility.html#598" class="Bound"
+      >e&#8242;</a
+      ><a name="673"
+      >
+
+  </a
+      ><a name="677" href="Convertibility.html#677" class="InductiveConstructor"
+      >cong&#8801;&#7517;&#7505;fst</a
+      ><a name="687"
+      >  </a
+      ><a name="689" class="Symbol"
+      >:</a
+      ><a name="690"
+      > </a
+      ><a name="691" class="Symbol"
+      >&#8704;</a
+      ><a name="692"
+      > </a
+      ><a name="693" class="Symbol"
+      >{</a
+      ><a name="694" href="Convertibility.html#694" class="Bound"
+      >A</a
+      ><a name="695"
+      > </a
+      ><a name="696" href="Convertibility.html#696" class="Bound"
+      >B</a
+      ><a name="697"
+      > </a
+      ><a name="698" href="Convertibility.html#698" class="Bound"
+      >&#915;</a
+      ><a name="699" class="Symbol"
+      >}</a
+      ><a name="700"
+      > </a
+      ><a name="701" class="Symbol"
+      >{</a
+      ><a name="702" href="Convertibility.html#702" class="Bound"
+      >d</a
+      ><a name="703"
+      > </a
+      ><a name="704" href="Convertibility.html#704" class="Bound"
+      >d&#8242;</a
+      ><a name="706"
+      > </a
+      ><a name="707" class="Symbol"
+      >:</a
+      ><a name="708"
+      > </a
+      ><a name="709" href="Convertibility.html#698" class="Bound"
+      >&#915;</a
+      ><a name="710"
+      > </a
+      ><a name="711" href="Syntax.html#437" class="Datatype Operator"
+      >&#8866;</a
+      ><a name="712"
+      > </a
+      ><a name="713" href="Convertibility.html#694" class="Bound"
+      >A</a
+      ><a name="714"
+      > </a
+      ><a name="715" href="Syntax.html#266" class="InductiveConstructor Operator"
+      >&#10837;</a
+      ><a name="716"
+      > </a
+      ><a name="717" href="Convertibility.html#696" class="Bound"
+      >B</a
+      ><a name="718" class="Symbol"
+      >}</a
+      ><a name="719"
+      > </a
+      ><a name="720" class="Symbol"
+      >&#8594;</a
+      ><a name="721"
+      >
+                </a
+      ><a name="738" href="Convertibility.html#702" class="Bound"
+      >d</a
+      ><a name="739"
+      > </a
+      ><a name="740" href="Convertibility.html#98" class="Datatype Operator"
+      >&#8801;&#7517;&#7505;</a
+      ><a name="743"
+      > </a
+      ><a name="744" href="Convertibility.html#704" class="Bound"
+      >d&#8242;</a
+      ><a name="746"
+      > </a
+      ><a name="747" class="Symbol"
+      >&#8594;</a
+      ><a name="748"
+      > </a
+      ><a name="749" href="Syntax.html#648" class="InductiveConstructor"
+      >fst</a
+      ><a name="752"
+      > </a
+      ><a name="753" href="Convertibility.html#702" class="Bound"
+      >d</a
+      ><a name="754"
+      > </a
+      ><a name="755" href="Convertibility.html#98" class="Datatype Operator"
+      >&#8801;&#7517;&#7505;</a
+      ><a name="758"
+      > </a
+      ><a name="759" href="Syntax.html#648" class="InductiveConstructor"
+      >fst</a
+      ><a name="762"
+      > </a
+      ><a name="763" href="Convertibility.html#704" class="Bound"
+      >d&#8242;</a
+      ><a name="765"
+      >
+
+  </a
+      ><a name="769" href="Convertibility.html#769" class="InductiveConstructor"
+      >cong&#8801;&#7517;&#7505;snd</a
+      ><a name="779"
+      >  </a
+      ><a name="781" class="Symbol"
+      >:</a
+      ><a name="782"
+      > </a
+      ><a name="783" class="Symbol"
+      >&#8704;</a
+      ><a name="784"
+      > </a
+      ><a name="785" class="Symbol"
+      >{</a
+      ><a name="786" href="Convertibility.html#786" class="Bound"
+      >A</a
+      ><a name="787"
+      > </a
+      ><a name="788" href="Convertibility.html#788" class="Bound"
+      >B</a
+      ><a name="789"
+      > </a
+      ><a name="790" href="Convertibility.html#790" class="Bound"
+      >&#915;</a
+      ><a name="791" class="Symbol"
+      >}</a
+      ><a name="792"
+      > </a
+      ><a name="793" class="Symbol"
+      >{</a
+      ><a name="794" href="Convertibility.html#794" class="Bound"
+      >d</a
+      ><a name="795"
+      > </a
+      ><a name="796" href="Convertibility.html#796" class="Bound"
+      >d&#8242;</a
+      ><a name="798"
+      > </a
+      ><a name="799" class="Symbol"
+      >:</a
+      ><a name="800"
+      > </a
+      ><a name="801" href="Convertibility.html#790" class="Bound"
+      >&#915;</a
+      ><a name="802"
+      > </a
+      ><a name="803" href="Syntax.html#437" class="Datatype Operator"
+      >&#8866;</a
+      ><a name="804"
+      > </a
+      ><a name="805" href="Convertibility.html#786" class="Bound"
+      >A</a
+      ><a name="806"
+      > </a
+      ><a name="807" href="Syntax.html#266" class="InductiveConstructor Operator"
+      >&#10837;</a
+      ><a name="808"
+      > </a
+      ><a name="809" href="Convertibility.html#788" class="Bound"
+      >B</a
+      ><a name="810" class="Symbol"
+      >}</a
+      ><a name="811"
+      > </a
+      ><a name="812" class="Symbol"
+      >&#8594;</a
+      ><a name="813"
+      >
+                </a
+      ><a name="830" href="Convertibility.html#794" class="Bound"
+      >d</a
+      ><a name="831"
+      > </a
+      ><a name="832" href="Convertibility.html#98" class="Datatype Operator"
+      >&#8801;&#7517;&#7505;</a
+      ><a name="835"
+      > </a
+      ><a name="836" href="Convertibility.html#796" class="Bound"
+      >d&#8242;</a
+      ><a name="838"
+      > </a
+      ><a name="839" class="Symbol"
+      >&#8594;</a
+      ><a name="840"
+      > </a
+      ><a name="841" href="Syntax.html#688" class="InductiveConstructor"
+      >snd</a
+      ><a name="844"
+      > </a
+      ><a name="845" href="Convertibility.html#794" class="Bound"
+      >d</a
+      ><a name="846"
+      > </a
+      ><a name="847" href="Convertibility.html#98" class="Datatype Operator"
+      >&#8801;&#7517;&#7505;</a
+      ><a name="850"
+      > </a
+      ><a name="851" href="Syntax.html#688" class="InductiveConstructor"
+      >snd</a
+      ><a name="854"
+      > </a
+      ><a name="855" href="Convertibility.html#796" class="Bound"
+      >d&#8242;</a
+      ><a name="857"
+      >
+
+
+  </a
+      ><a name="862" class="Comment"
+      >-- Reductions, or &#946;-conversions.</a
+      ><a name="894"
+      >
+
+  </a
+      ><a name="898" href="Convertibility.html#898" class="InductiveConstructor"
+      >reduce&#8658;</a
+      ><a name="905"
+      > </a
+      ><a name="906" class="Symbol"
+      >:</a
+      ><a name="907"
+      > </a
+      ><a name="908" class="Symbol"
+      >&#8704;</a
+      ><a name="909"
+      > </a
+      ><a name="910" class="Symbol"
+      >{</a
+      ><a name="911" href="Convertibility.html#911" class="Bound"
+      >A</a
+      ><a name="912"
+      > </a
+      ><a name="913" href="Convertibility.html#913" class="Bound"
+      >B</a
+      ><a name="914"
+      > </a
+      ><a name="915" href="Convertibility.html#915" class="Bound"
+      >&#915;</a
+      ><a name="916" class="Symbol"
+      >}</a
+      ><a name="917"
+      > </a
+      ><a name="918" class="Symbol"
+      >&#8594;</a
+      ><a name="919"
+      > </a
+      ><a name="920" class="Symbol"
+      >(</a
+      ><a name="921" href="Convertibility.html#921" class="Bound"
+      >d</a
+      ><a name="922"
+      > </a
+      ><a name="923" class="Symbol"
+      >:</a
+      ><a name="924"
+      > </a
+      ><a name="925" href="Convertibility.html#915" class="Bound"
+      >&#915;</a
+      ><a name="926"
+      > </a
+      ><a name="927" href="Stack.html#128" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="928"
+      > </a
+      ><a name="929" href="Convertibility.html#911" class="Bound"
+      >A</a
+      ><a name="930"
+      > </a
+      ><a name="931" href="Syntax.html#437" class="Datatype Operator"
+      >&#8866;</a
+      ><a name="932"
+      > </a
+      ><a name="933" href="Convertibility.html#913" class="Bound"
+      >B</a
+      ><a name="934" class="Symbol"
+      >)</a
+      ><a name="935"
+      > </a
+      ><a name="936" class="Symbol"
+      >(</a
+      ><a name="937" href="Convertibility.html#937" class="Bound"
+      >e</a
+      ><a name="938"
+      > </a
+      ><a name="939" class="Symbol"
+      >:</a
+      ><a name="940"
+      > </a
+      ><a name="941" href="Convertibility.html#915" class="Bound"
+      >&#915;</a
+      ><a name="942"
+      > </a
+      ><a name="943" href="Syntax.html#437" class="Datatype Operator"
+      >&#8866;</a
+      ><a name="944"
+      > </a
+      ><a name="945" href="Convertibility.html#911" class="Bound"
+      >A</a
+      ><a name="946" class="Symbol"
+      >)</a
+      ><a name="947"
+      > </a
+      ><a name="948" class="Symbol"
+      >&#8594;</a
+      ><a name="949"
+      >
+             </a
+      ><a name="963" href="Syntax.html#552" class="InductiveConstructor"
+      >app</a
+      ><a name="966"
+      > </a
+      ><a name="967" class="Symbol"
+      >(</a
+      ><a name="968" href="Syntax.html#508" class="InductiveConstructor"
+      >lam</a
+      ><a name="971"
+      > </a
+      ><a name="972" href="Convertibility.html#921" class="Bound"
+      >d</a
+      ><a name="973" class="Symbol"
+      >)</a
+      ><a name="974"
+      > </a
+      ><a name="975" href="Convertibility.html#937" class="Bound"
+      >e</a
+      ><a name="976"
+      > </a
+      ><a name="977" href="Convertibility.html#98" class="Datatype Operator"
+      >&#8801;&#7517;&#7505;</a
+      ><a name="980"
+      > </a
+      ><a name="981" href="Syntax.html#2486" class="Function Operator"
+      >[</a
+      ><a name="982"
+      > </a
+      ><a name="983" href="Stack.html#286" class="InductiveConstructor"
+      >top</a
+      ><a name="986"
+      > </a
+      ><a name="987" href="Syntax.html#2486" class="Function Operator"
+      >&#8788;</a
+      ><a name="988"
+      > </a
+      ><a name="989" href="Convertibility.html#937" class="Bound"
+      >e</a
+      ><a name="990"
+      > </a
+      ><a name="991" href="Syntax.html#2486" class="Function Operator"
+      >]</a
+      ><a name="992"
+      > </a
+      ><a name="993" href="Convertibility.html#921" class="Bound"
+      >d</a
+      ><a name="994"
+      >
+
+  </a
+      ><a name="998" href="Convertibility.html#998" class="InductiveConstructor"
+      >reduce&#10837;&#8321;</a
+      ><a name="1006"
+      > </a
+      ><a name="1007" class="Symbol"
+      >:</a
+      ><a name="1008"
+      > </a
+      ><a name="1009" class="Symbol"
+      >&#8704;</a
+      ><a name="1010"
+      > </a
+      ><a name="1011" class="Symbol"
+      >{</a
+      ><a name="1012" href="Convertibility.html#1012" class="Bound"
+      >A</a
+      ><a name="1013"
+      > </a
+      ><a name="1014" href="Convertibility.html#1014" class="Bound"
+      >B</a
+      ><a name="1015"
+      > </a
+      ><a name="1016" href="Convertibility.html#1016" class="Bound"
+      >&#915;</a
+      ><a name="1017" class="Symbol"
+      >}</a
+      ><a name="1018"
+      > </a
+      ><a name="1019" class="Symbol"
+      >&#8594;</a
+      ><a name="1020"
+      > </a
+      ><a name="1021" class="Symbol"
+      >(</a
+      ><a name="1022" href="Convertibility.html#1022" class="Bound"
+      >d</a
+      ><a name="1023"
+      > </a
+      ><a name="1024" class="Symbol"
+      >:</a
+      ><a name="1025"
+      > </a
+      ><a name="1026" href="Convertibility.html#1016" class="Bound"
+      >&#915;</a
+      ><a name="1027"
+      > </a
+      ><a name="1028" href="Syntax.html#437" class="Datatype Operator"
+      >&#8866;</a
+      ><a name="1029"
+      > </a
+      ><a name="1030" href="Convertibility.html#1012" class="Bound"
+      >A</a
+      ><a name="1031" class="Symbol"
+      >)</a
+      ><a name="1032"
+      > </a
+      ><a name="1033" class="Symbol"
+      >(</a
+      ><a name="1034" href="Convertibility.html#1034" class="Bound"
+      >e</a
+      ><a name="1035"
+      > </a
+      ><a name="1036" class="Symbol"
+      >:</a
+      ><a name="1037"
+      > </a
+      ><a name="1038" href="Convertibility.html#1016" class="Bound"
+      >&#915;</a
+      ><a name="1039"
+      > </a
+      ><a name="1040" href="Syntax.html#437" class="Datatype Operator"
+      >&#8866;</a
+      ><a name="1041"
+      > </a
+      ><a name="1042" href="Convertibility.html#1014" class="Bound"
+      >B</a
+      ><a name="1043" class="Symbol"
+      >)</a
+      ><a name="1044"
+      > </a
+      ><a name="1045" class="Symbol"
+      >&#8594;</a
+      ><a name="1046"
+      >
+             </a
+      ><a name="1060" href="Syntax.html#648" class="InductiveConstructor"
+      >fst</a
+      ><a name="1063"
+      > </a
+      ><a name="1064" class="Symbol"
+      >(</a
+      ><a name="1065" href="Syntax.html#600" class="InductiveConstructor"
+      >pair</a
+      ><a name="1069"
+      > </a
+      ><a name="1070" href="Convertibility.html#1022" class="Bound"
+      >d</a
+      ><a name="1071"
+      > </a
+      ><a name="1072" href="Convertibility.html#1034" class="Bound"
+      >e</a
+      ><a name="1073" class="Symbol"
+      >)</a
+      ><a name="1074"
+      > </a
+      ><a name="1075" href="Convertibility.html#98" class="Datatype Operator"
+      >&#8801;&#7517;&#7505;</a
+      ><a name="1078"
+      > </a
+      ><a name="1079" href="Convertibility.html#1022" class="Bound"
+      >d</a
+      ><a name="1080"
+      >
+
+  </a
+      ><a name="1084" href="Convertibility.html#1084" class="InductiveConstructor"
+      >reduce&#10837;&#8322;</a
+      ><a name="1092"
+      > </a
+      ><a name="1093" class="Symbol"
+      >:</a
+      ><a name="1094"
+      > </a
+      ><a name="1095" class="Symbol"
+      >&#8704;</a
+      ><a name="1096"
+      > </a
+      ><a name="1097" class="Symbol"
+      >{</a
+      ><a name="1098" href="Convertibility.html#1098" class="Bound"
+      >A</a
+      ><a name="1099"
+      > </a
+      ><a name="1100" href="Convertibility.html#1100" class="Bound"
+      >B</a
+      ><a name="1101"
+      > </a
+      ><a name="1102" href="Convertibility.html#1102" class="Bound"
+      >&#915;</a
+      ><a name="1103" class="Symbol"
+      >}</a
+      ><a name="1104"
+      > </a
+      ><a name="1105" class="Symbol"
+      >&#8594;</a
+      ><a name="1106"
+      > </a
+      ><a name="1107" class="Symbol"
+      >(</a
+      ><a name="1108" href="Convertibility.html#1108" class="Bound"
+      >d</a
+      ><a name="1109"
+      > </a
+      ><a name="1110" class="Symbol"
+      >:</a
+      ><a name="1111"
+      > </a
+      ><a name="1112" href="Convertibility.html#1102" class="Bound"
+      >&#915;</a
+      ><a name="1113"
+      > </a
+      ><a name="1114" href="Syntax.html#437" class="Datatype Operator"
+      >&#8866;</a
+      ><a name="1115"
+      > </a
+      ><a name="1116" href="Convertibility.html#1098" class="Bound"
+      >A</a
+      ><a name="1117" class="Symbol"
+      >)</a
+      ><a name="1118"
+      > </a
+      ><a name="1119" class="Symbol"
+      >(</a
+      ><a name="1120" href="Convertibility.html#1120" class="Bound"
+      >e</a
+      ><a name="1121"
+      > </a
+      ><a name="1122" class="Symbol"
+      >:</a
+      ><a name="1123"
+      > </a
+      ><a name="1124" href="Convertibility.html#1102" class="Bound"
+      >&#915;</a
+      ><a name="1125"
+      > </a
+      ><a name="1126" href="Syntax.html#437" class="Datatype Operator"
+      >&#8866;</a
+      ><a name="1127"
+      > </a
+      ><a name="1128" href="Convertibility.html#1100" class="Bound"
+      >B</a
+      ><a name="1129" class="Symbol"
+      >)</a
+      ><a name="1130"
+      > </a
+      ><a name="1131" class="Symbol"
+      >&#8594;</a
+      ><a name="1132"
+      >
+             </a
+      ><a name="1146" href="Syntax.html#688" class="InductiveConstructor"
+      >snd</a
+      ><a name="1149"
+      > </a
+      ><a name="1150" class="Symbol"
+      >(</a
+      ><a name="1151" href="Syntax.html#600" class="InductiveConstructor"
+      >pair</a
+      ><a name="1155"
+      > </a
+      ><a name="1156" href="Convertibility.html#1108" class="Bound"
+      >d</a
+      ><a name="1157"
+      > </a
+      ><a name="1158" href="Convertibility.html#1120" class="Bound"
+      >e</a
+      ><a name="1159" class="Symbol"
+      >)</a
+      ><a name="1160"
+      > </a
+      ><a name="1161" href="Convertibility.html#98" class="Datatype Operator"
+      >&#8801;&#7517;&#7505;</a
+      ><a name="1164"
+      > </a
+      ><a name="1165" href="Convertibility.html#1120" class="Bound"
+      >e</a
+      ><a name="1166"
+      >
+
+
+  </a
+      ><a name="1171" class="Comment"
+      >-- Expansions, or &#951;-conversions.</a
+      ><a name="1203"
+      >
+
+  </a
+      ><a name="1207" href="Convertibility.html#1207" class="InductiveConstructor"
+      >expand&#8658;</a
+      ><a name="1214"
+      > </a
+      ><a name="1215" class="Symbol"
+      >:</a
+      ><a name="1216"
+      > </a
+      ><a name="1217" class="Symbol"
+      >&#8704;</a
+      ><a name="1218"
+      > </a
+      ><a name="1219" class="Symbol"
+      >{</a
+      ><a name="1220" href="Convertibility.html#1220" class="Bound"
+      >A</a
+      ><a name="1221"
+      > </a
+      ><a name="1222" href="Convertibility.html#1222" class="Bound"
+      >B</a
+      ><a name="1223"
+      > </a
+      ><a name="1224" href="Convertibility.html#1224" class="Bound"
+      >&#915;</a
+      ><a name="1225" class="Symbol"
+      >}</a
+      ><a name="1226"
+      > </a
+      ><a name="1227" class="Symbol"
+      >&#8594;</a
+      ><a name="1228"
+      > </a
+      ><a name="1229" class="Symbol"
+      >(</a
+      ><a name="1230" href="Convertibility.html#1230" class="Bound"
+      >d</a
+      ><a name="1231"
+      > </a
+      ><a name="1232" class="Symbol"
+      >:</a
+      ><a name="1233"
+      > </a
+      ><a name="1234" href="Convertibility.html#1224" class="Bound"
+      >&#915;</a
+      ><a name="1235"
+      > </a
+      ><a name="1236" href="Syntax.html#437" class="Datatype Operator"
+      >&#8866;</a
+      ><a name="1237"
+      > </a
+      ><a name="1238" href="Convertibility.html#1220" class="Bound"
+      >A</a
+      ><a name="1239"
+      > </a
+      ><a name="1240" href="Syntax.html#239" class="InductiveConstructor Operator"
+      >&#8658;</a
+      ><a name="1241"
+      > </a
+      ><a name="1242" href="Convertibility.html#1222" class="Bound"
+      >B</a
+      ><a name="1243" class="Symbol"
+      >)</a
+      ><a name="1244"
+      > </a
+      ><a name="1245" class="Symbol"
+      >&#8594;</a
+      ><a name="1246"
+      >
+             </a
+      ><a name="1260" href="Convertibility.html#1230" class="Bound"
+      >d</a
+      ><a name="1261"
+      > </a
+      ><a name="1262" href="Convertibility.html#98" class="Datatype Operator"
+      >&#8801;&#7517;&#7505;</a
+      ><a name="1265"
+      > </a
+      ><a name="1266" href="Syntax.html#508" class="InductiveConstructor"
+      >lam</a
+      ><a name="1269"
+      > </a
+      ><a name="1270" class="Symbol"
+      >(</a
+      ><a name="1271" href="Syntax.html#552" class="InductiveConstructor"
+      >app</a
+      ><a name="1274"
+      > </a
+      ><a name="1275" class="Symbol"
+      >(</a
+      ><a name="1276" href="Syntax.html#1151" class="Function"
+      >mono&#8866;</a
+      ><a name="1281"
+      > </a
+      ><a name="1282" href="Stack.html#1121" class="Function"
+      >weak&#8838;</a
+      ><a name="1287"
+      > </a
+      ><a name="1288" href="Convertibility.html#1230" class="Bound"
+      >d</a
+      ><a name="1289" class="Symbol"
+      >)</a
+      ><a name="1290"
+      > </a
+      ><a name="1291" href="Syntax.html#785" class="Function"
+      >v&#8320;</a
+      ><a name="1293" class="Symbol"
+      >)</a
+      ><a name="1294"
+      >
+
+  </a
+      ><a name="1298" href="Convertibility.html#1298" class="InductiveConstructor"
+      >expand&#10837;</a
+      ><a name="1305"
+      >  </a
+      ><a name="1307" class="Symbol"
+      >:</a
+      ><a name="1308"
+      > </a
+      ><a name="1309" class="Symbol"
+      >&#8704;</a
+      ><a name="1310"
+      > </a
+      ><a name="1311" class="Symbol"
+      >{</a
+      ><a name="1312" href="Convertibility.html#1312" class="Bound"
+      >A</a
+      ><a name="1313"
+      > </a
+      ><a name="1314" href="Convertibility.html#1314" class="Bound"
+      >B</a
+      ><a name="1315"
+      > </a
+      ><a name="1316" href="Convertibility.html#1316" class="Bound"
+      >&#915;</a
+      ><a name="1317" class="Symbol"
+      >}</a
+      ><a name="1318"
+      > </a
+      ><a name="1319" class="Symbol"
+      >&#8594;</a
+      ><a name="1320"
+      > </a
+      ><a name="1321" class="Symbol"
+      >(</a
+      ><a name="1322" href="Convertibility.html#1322" class="Bound"
+      >d</a
+      ><a name="1323"
+      > </a
+      ><a name="1324" class="Symbol"
+      >:</a
+      ><a name="1325"
+      > </a
+      ><a name="1326" href="Convertibility.html#1316" class="Bound"
+      >&#915;</a
+      ><a name="1327"
+      > </a
+      ><a name="1328" href="Syntax.html#437" class="Datatype Operator"
+      >&#8866;</a
+      ><a name="1329"
+      > </a
+      ><a name="1330" href="Convertibility.html#1312" class="Bound"
+      >A</a
+      ><a name="1331"
+      > </a
+      ><a name="1332" href="Syntax.html#266" class="InductiveConstructor Operator"
+      >&#10837;</a
+      ><a name="1333"
+      > </a
+      ><a name="1334" href="Convertibility.html#1314" class="Bound"
+      >B</a
+      ><a name="1335" class="Symbol"
+      >)</a
+      ><a name="1336"
+      > </a
+      ><a name="1337" class="Symbol"
+      >&#8594;</a
+      ><a name="1338"
+      >
+             </a
+      ><a name="1352" href="Convertibility.html#1322" class="Bound"
+      >d</a
+      ><a name="1353"
+      > </a
+      ><a name="1354" href="Convertibility.html#98" class="Datatype Operator"
+      >&#8801;&#7517;&#7505;</a
+      ><a name="1357"
+      > </a
+      ><a name="1358" href="Syntax.html#600" class="InductiveConstructor"
+      >pair</a
+      ><a name="1362"
+      > </a
+      ><a name="1363" class="Symbol"
+      >(</a
+      ><a name="1364" href="Syntax.html#648" class="InductiveConstructor"
+      >fst</a
+      ><a name="1367"
+      > </a
+      ><a name="1368" href="Convertibility.html#1322" class="Bound"
+      >d</a
+      ><a name="1369" class="Symbol"
+      >)</a
+      ><a name="1370"
+      > </a
+      ><a name="1371" class="Symbol"
+      >(</a
+      ><a name="1372" href="Syntax.html#688" class="InductiveConstructor"
+      >snd</a
+      ><a name="1375"
+      > </a
+      ><a name="1376" href="Convertibility.html#1322" class="Bound"
+      >d</a
+      ><a name="1377" class="Symbol"
+      >)</a
+      ><a name="1378"
+      >
+
+  </a
+      ><a name="1382" href="Convertibility.html#1382" class="InductiveConstructor"
+      >expand&#10986;</a
+      ><a name="1389"
+      > </a
+      ><a name="1390" class="Symbol"
+      >:</a
+      ><a name="1391"
+      > </a
+      ><a name="1392" class="Symbol"
+      >&#8704;</a
+      ><a name="1393"
+      > </a
+      ><a name="1394" class="Symbol"
+      >{</a
+      ><a name="1395" href="Convertibility.html#1395" class="Bound"
+      >&#915;</a
+      ><a name="1396" class="Symbol"
+      >}</a
+      ><a name="1397"
+      > </a
+      ><a name="1398" class="Symbol"
+      >&#8594;</a
+      ><a name="1399"
+      > </a
+      ><a name="1400" class="Symbol"
+      >(</a
+      ><a name="1401" href="Convertibility.html#1401" class="Bound"
+      >d</a
+      ><a name="1402"
+      > </a
+      ><a name="1403" class="Symbol"
+      >:</a
+      ><a name="1404"
+      > </a
+      ><a name="1405" href="Convertibility.html#1395" class="Bound"
+      >&#915;</a
+      ><a name="1406"
+      > </a
+      ><a name="1407" href="Syntax.html#437" class="Datatype Operator"
+      >&#8866;</a
+      ><a name="1408"
+      > </a
+      ><a name="1409" href="Syntax.html#294" class="InductiveConstructor"
+      >&#10986;</a
+      ><a name="1410" class="Symbol"
+      >)</a
+      ><a name="1411"
+      > </a
+      ><a name="1412" class="Symbol"
+      >&#8594;</a
+      ><a name="1413"
+      >
+             </a
+      ><a name="1427" href="Convertibility.html#1401" class="Bound"
+      >d</a
+      ><a name="1428"
+      > </a
+      ><a name="1429" href="Convertibility.html#98" class="Datatype Operator"
+      >&#8801;&#7517;&#7505;</a
+      ><a name="1432"
+      > </a
+      ><a name="1433" href="Syntax.html#728" class="InductiveConstructor"
+      >unit</a
+      ><a name="1437"
+      >
+
+
+</a
+      ><a name="1440" href="Convertibility.html#1440" class="Function"
+      >&#8801;&#8594;&#8801;&#7517;&#7505;</a
+      ><a name="1445"
+      > </a
+      ><a name="1446" class="Symbol"
+      >:</a
+      ><a name="1447"
+      > </a
+      ><a name="1448" class="Symbol"
+      >&#8704;</a
+      ><a name="1449"
+      > </a
+      ><a name="1450" class="Symbol"
+      >{</a
+      ><a name="1451" href="Convertibility.html#1451" class="Bound"
+      >A</a
+      ><a name="1452"
+      > </a
+      ><a name="1453" href="Convertibility.html#1453" class="Bound"
+      >&#915;</a
+      ><a name="1454" class="Symbol"
+      >}</a
+      ><a name="1455"
+      > </a
+      ><a name="1456" class="Symbol"
+      >{</a
+      ><a name="1457" href="Convertibility.html#1457" class="Bound"
+      >d</a
+      ><a name="1458"
+      > </a
+      ><a name="1459" href="Convertibility.html#1459" class="Bound"
+      >d&#8242;</a
+      ><a name="1461"
+      > </a
+      ><a name="1462" class="Symbol"
+      >:</a
+      ><a name="1463"
+      > </a
+      ><a name="1464" href="Convertibility.html#1453" class="Bound"
+      >&#915;</a
+      ><a name="1465"
+      > </a
+      ><a name="1466" href="Syntax.html#437" class="Datatype Operator"
+      >&#8866;</a
+      ><a name="1467"
+      > </a
+      ><a name="1468" href="Convertibility.html#1451" class="Bound"
+      >A</a
+      ><a name="1469" class="Symbol"
+      >}</a
+      ><a name="1470"
+      > </a
+      ><a name="1471" class="Symbol"
+      >&#8594;</a
+      ><a name="1472"
+      > </a
+      ><a name="1473" href="Convertibility.html#1457" class="Bound"
+      >d</a
+      ><a name="1474"
+      > </a
+      ><a name="1475" href="Agda.Builtin.Equality.html#83" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1476"
+      > </a
+      ><a name="1477" href="Convertibility.html#1459" class="Bound"
+      >d&#8242;</a
+      ><a name="1479"
+      > </a
+      ><a name="1480" class="Symbol"
+      >&#8594;</a
+      ><a name="1481"
+      > </a
+      ><a name="1482" href="Convertibility.html#1457" class="Bound"
+      >d</a
+      ><a name="1483"
+      > </a
+      ><a name="1484" href="Convertibility.html#98" class="Datatype Operator"
+      >&#8801;&#7517;&#7505;</a
+      ><a name="1487"
+      > </a
+      ><a name="1488" href="Convertibility.html#1459" class="Bound"
+      >d&#8242;</a
+      ><a name="1490"
+      >
+</a
+      ><a name="1491" href="Convertibility.html#1440" class="Function"
+      >&#8801;&#8594;&#8801;&#7517;&#7505;</a
+      ><a name="1496"
+      > </a
+      ><a name="1497" href="Agda.Builtin.Equality.html#140" class="InductiveConstructor"
+      >refl</a
+      ><a name="1501"
+      > </a
+      ><a name="1502" class="Symbol"
+      >=</a
+      ><a name="1503"
+      > </a
+      ><a name="1504" href="Convertibility.html#144" class="InductiveConstructor"
+      >refl&#8801;&#7517;&#7505;</a
+      ><a name="1511"
+      >
+
+
+</a
+      ><a name="1514" class="Comment"
+      >-- Syntax for equational reasoning with &#946;-&#951;-equivalence.</a
+      ><a name="1570"
+      >
+
+</a
+      ><a name="1572" class="Keyword"
+      >module</a
+      ><a name="1578"
+      > </a
+      ><a name="1579" href="Convertibility.html#1579" class="Module"
+      >&#8801;&#7517;&#7505;-Reasoning</a
+      ><a name="1592"
+      > </a
+      ><a name="1593" class="Keyword"
+      >where</a
+      ><a name="1598"
+      >
+  </a
+      ><a name="1601" class="Keyword"
+      >infix</a
+      ><a name="1606"
+      > </a
+      ><a name="1607" class="Number"
+      >1</a
+      ><a name="1608"
+      > </a
+      ><a name="1609" href="Convertibility.html#1621" class="Function Operator"
+      >begin&#8801;&#7517;&#7505;_</a
+      ><a name="1618"
+      >
+  </a
+      ><a name="1621" href="Convertibility.html#1621" class="Function Operator"
+      >begin&#8801;&#7517;&#7505;_</a
+      ><a name="1630"
+      > </a
+      ><a name="1631" class="Symbol"
+      >:</a
+      ><a name="1632"
+      > </a
+      ><a name="1633" class="Symbol"
+      >&#8704;</a
+      ><a name="1634"
+      > </a
+      ><a name="1635" class="Symbol"
+      >{</a
+      ><a name="1636" href="Convertibility.html#1636" class="Bound"
+      >A</a
+      ><a name="1637"
+      > </a
+      ><a name="1638" href="Convertibility.html#1638" class="Bound"
+      >&#915;</a
+      ><a name="1639" class="Symbol"
+      >}</a
+      ><a name="1640"
+      > </a
+      ><a name="1641" class="Symbol"
+      >{</a
+      ><a name="1642" href="Convertibility.html#1642" class="Bound"
+      >d</a
+      ><a name="1643"
+      > </a
+      ><a name="1644" href="Convertibility.html#1644" class="Bound"
+      >d&#8242;</a
+      ><a name="1646"
+      > </a
+      ><a name="1647" class="Symbol"
+      >:</a
+      ><a name="1648"
+      > </a
+      ><a name="1649" href="Convertibility.html#1638" class="Bound"
+      >&#915;</a
+      ><a name="1650"
+      > </a
+      ><a name="1651" href="Syntax.html#437" class="Datatype Operator"
+      >&#8866;</a
+      ><a name="1652"
+      > </a
+      ><a name="1653" href="Convertibility.html#1636" class="Bound"
+      >A</a
+      ><a name="1654" class="Symbol"
+      >}</a
+      ><a name="1655"
+      > </a
+      ><a name="1656" class="Symbol"
+      >&#8594;</a
+      ><a name="1657"
+      > </a
+      ><a name="1658" href="Convertibility.html#1642" class="Bound"
+      >d</a
+      ><a name="1659"
+      > </a
+      ><a name="1660" href="Convertibility.html#98" class="Datatype Operator"
+      >&#8801;&#7517;&#7505;</a
+      ><a name="1663"
+      > </a
+      ><a name="1664" href="Convertibility.html#1644" class="Bound"
+      >d&#8242;</a
+      ><a name="1666"
+      > </a
+      ><a name="1667" class="Symbol"
+      >&#8594;</a
+      ><a name="1668"
+      > </a
+      ><a name="1669" href="Convertibility.html#1642" class="Bound"
+      >d</a
+      ><a name="1670"
+      > </a
+      ><a name="1671" href="Convertibility.html#98" class="Datatype Operator"
+      >&#8801;&#7517;&#7505;</a
+      ><a name="1674"
+      > </a
+      ><a name="1675" href="Convertibility.html#1644" class="Bound"
+      >d&#8242;</a
+      ><a name="1677"
+      >
+  </a
+      ><a name="1680" href="Convertibility.html#1621" class="Function Operator"
+      >begin&#8801;&#7517;&#7505;_</a
+      ><a name="1689"
+      > </a
+      ><a name="1690" href="Convertibility.html#1690" class="Bound"
+      >p</a
+      ><a name="1691"
+      > </a
+      ><a name="1692" class="Symbol"
+      >=</a
+      ><a name="1693"
+      > </a
+      ><a name="1694" href="Convertibility.html#1690" class="Bound"
+      >p</a
+      ><a name="1695"
+      >
+
+  </a
+      ><a name="1699" class="Keyword"
+      >infixr</a
+      ><a name="1705"
+      > </a
+      ><a name="1706" class="Number"
+      >2</a
+      ><a name="1707"
+      > </a
+      ><a name="1708" href="Convertibility.html#1720" class="Function Operator"
+      >_&#8801;&#8594;&#8801;&#7517;&#7505;&#10216;&#10217;_</a
+      ><a name="1717"
+      >
+  </a
+      ><a name="1720" href="Convertibility.html#1720" class="Function Operator"
+      >_&#8801;&#8594;&#8801;&#7517;&#7505;&#10216;&#10217;_</a
+      ><a name="1729"
+      > </a
+      ><a name="1730" class="Symbol"
+      >:</a
+      ><a name="1731"
+      > </a
+      ><a name="1732" class="Symbol"
+      >&#8704;</a
+      ><a name="1733"
+      > </a
+      ><a name="1734" class="Symbol"
+      >{</a
+      ><a name="1735" href="Convertibility.html#1735" class="Bound"
+      >A</a
+      ><a name="1736"
+      > </a
+      ><a name="1737" href="Convertibility.html#1737" class="Bound"
+      >&#915;</a
+      ><a name="1738" class="Symbol"
+      >}</a
+      ><a name="1739"
+      > </a
+      ><a name="1740" class="Symbol"
+      >(</a
+      ><a name="1741" href="Convertibility.html#1741" class="Bound"
+      >d</a
+      ><a name="1742"
+      > </a
+      ><a name="1743" class="Symbol"
+      >{</a
+      ><a name="1744" href="Convertibility.html#1744" class="Bound"
+      >d&#8242;</a
+      ><a name="1746" class="Symbol"
+      >}</a
+      ><a name="1747"
+      > </a
+      ><a name="1748" class="Symbol"
+      >:</a
+      ><a name="1749"
+      > </a
+      ><a name="1750" href="Convertibility.html#1737" class="Bound"
+      >&#915;</a
+      ><a name="1751"
+      > </a
+      ><a name="1752" href="Syntax.html#437" class="Datatype Operator"
+      >&#8866;</a
+      ><a name="1753"
+      > </a
+      ><a name="1754" href="Convertibility.html#1735" class="Bound"
+      >A</a
+      ><a name="1755" class="Symbol"
+      >)</a
+      ><a name="1756"
+      > </a
+      ><a name="1757" class="Symbol"
+      >&#8594;</a
+      ><a name="1758"
+      > </a
+      ><a name="1759" href="Convertibility.html#1741" class="Bound"
+      >d</a
+      ><a name="1760"
+      > </a
+      ><a name="1761" href="Agda.Builtin.Equality.html#83" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1762"
+      > </a
+      ><a name="1763" href="Convertibility.html#1744" class="Bound"
+      >d&#8242;</a
+      ><a name="1765"
+      > </a
+      ><a name="1766" class="Symbol"
+      >&#8594;</a
+      ><a name="1767"
+      > </a
+      ><a name="1768" href="Convertibility.html#1741" class="Bound"
+      >d</a
+      ><a name="1769"
+      > </a
+      ><a name="1770" href="Convertibility.html#98" class="Datatype Operator"
+      >&#8801;&#7517;&#7505;</a
+      ><a name="1773"
+      > </a
+      ><a name="1774" href="Convertibility.html#1744" class="Bound"
+      >d&#8242;</a
+      ><a name="1776"
+      >
+  </a
+      ><a name="1779" href="Convertibility.html#1779" class="Bound"
+      >d</a
+      ><a name="1780"
+      > </a
+      ><a name="1781" href="Convertibility.html#1720" class="Function Operator"
+      >&#8801;&#8594;&#8801;&#7517;&#7505;&#10216;&#10217;</a
+      ><a name="1788"
+      > </a
+      ><a name="1789" href="Convertibility.html#1789" class="Bound"
+      >p</a
+      ><a name="1790"
+      > </a
+      ><a name="1791" class="Symbol"
+      >=</a
+      ><a name="1792"
+      > </a
+      ><a name="1793" href="Convertibility.html#1440" class="Function"
+      >&#8801;&#8594;&#8801;&#7517;&#7505;</a
+      ><a name="1798"
+      > </a
+      ><a name="1799" href="Convertibility.html#1789" class="Bound"
+      >p</a
+      ><a name="1800"
+      >
+
+  </a
+      ><a name="1804" class="Keyword"
+      >infixr</a
+      ><a name="1810"
+      > </a
+      ><a name="1811" class="Number"
+      >2</a
+      ><a name="1812"
+      > </a
+      ><a name="1813" href="Convertibility.html#1823" class="Function Operator"
+      >_&#8801;&#7517;&#7505;&#10216;&#10217;_</a
+      ><a name="1820"
+      >
+  </a
+      ><a name="1823" href="Convertibility.html#1823" class="Function Operator"
+      >_&#8801;&#7517;&#7505;&#10216;&#10217;_</a
+      ><a name="1830"
+      > </a
+      ><a name="1831" class="Symbol"
+      >:</a
+      ><a name="1832"
+      > </a
+      ><a name="1833" class="Symbol"
+      >&#8704;</a
+      ><a name="1834"
+      > </a
+      ><a name="1835" class="Symbol"
+      >{</a
+      ><a name="1836" href="Convertibility.html#1836" class="Bound"
+      >A</a
+      ><a name="1837"
+      > </a
+      ><a name="1838" href="Convertibility.html#1838" class="Bound"
+      >&#915;</a
+      ><a name="1839" class="Symbol"
+      >}</a
+      ><a name="1840"
+      > </a
+      ><a name="1841" class="Symbol"
+      >(</a
+      ><a name="1842" href="Convertibility.html#1842" class="Bound"
+      >d</a
+      ><a name="1843"
+      > </a
+      ><a name="1844" class="Symbol"
+      >{</a
+      ><a name="1845" href="Convertibility.html#1845" class="Bound"
+      >d&#8242;</a
+      ><a name="1847" class="Symbol"
+      >}</a
+      ><a name="1848"
+      > </a
+      ><a name="1849" class="Symbol"
+      >:</a
+      ><a name="1850"
+      > </a
+      ><a name="1851" href="Convertibility.html#1838" class="Bound"
+      >&#915;</a
+      ><a name="1852"
+      > </a
+      ><a name="1853" href="Syntax.html#437" class="Datatype Operator"
+      >&#8866;</a
+      ><a name="1854"
+      > </a
+      ><a name="1855" href="Convertibility.html#1836" class="Bound"
+      >A</a
+      ><a name="1856" class="Symbol"
+      >)</a
+      ><a name="1857"
+      > </a
+      ><a name="1858" class="Symbol"
+      >&#8594;</a
+      ><a name="1859"
+      > </a
+      ><a name="1860" href="Convertibility.html#1842" class="Bound"
+      >d</a
+      ><a name="1861"
+      > </a
+      ><a name="1862" href="Convertibility.html#98" class="Datatype Operator"
+      >&#8801;&#7517;&#7505;</a
+      ><a name="1865"
+      > </a
+      ><a name="1866" href="Convertibility.html#1845" class="Bound"
+      >d&#8242;</a
+      ><a name="1868"
+      > </a
+      ><a name="1869" class="Symbol"
+      >&#8594;</a
+      ><a name="1870"
+      > </a
+      ><a name="1871" href="Convertibility.html#1842" class="Bound"
+      >d</a
+      ><a name="1872"
+      > </a
+      ><a name="1873" href="Convertibility.html#98" class="Datatype Operator"
+      >&#8801;&#7517;&#7505;</a
+      ><a name="1876"
+      > </a
+      ><a name="1877" href="Convertibility.html#1845" class="Bound"
+      >d&#8242;</a
+      ><a name="1879"
+      >
+  </a
+      ><a name="1882" href="Convertibility.html#1882" class="Bound"
+      >d</a
+      ><a name="1883"
+      > </a
+      ><a name="1884" href="Convertibility.html#1823" class="Function Operator"
+      >&#8801;&#7517;&#7505;&#10216;&#10217;</a
+      ><a name="1889"
+      > </a
+      ><a name="1890" href="Convertibility.html#1890" class="Bound"
+      >p</a
+      ><a name="1891"
+      > </a
+      ><a name="1892" class="Symbol"
+      >=</a
+      ><a name="1893"
+      > </a
+      ><a name="1894" href="Convertibility.html#1890" class="Bound"
+      >p</a
+      ><a name="1895"
+      >
+
+  </a
+      ><a name="1899" class="Keyword"
+      >infixr</a
+      ><a name="1905"
+      > </a
+      ><a name="1906" class="Number"
+      >2</a
+      ><a name="1907"
+      > </a
+      ><a name="1908" href="Convertibility.html#1919" class="Function Operator"
+      >_&#8801;&#7517;&#7505;&#10216;_&#10217;_</a
+      ><a name="1916"
+      >
+  </a
+      ><a name="1919" href="Convertibility.html#1919" class="Function Operator"
+      >_&#8801;&#7517;&#7505;&#10216;_&#10217;_</a
+      ><a name="1927"
+      > </a
+      ><a name="1928" class="Symbol"
+      >:</a
+      ><a name="1929"
+      > </a
+      ><a name="1930" class="Symbol"
+      >&#8704;</a
+      ><a name="1931"
+      > </a
+      ><a name="1932" class="Symbol"
+      >{</a
+      ><a name="1933" href="Convertibility.html#1933" class="Bound"
+      >A</a
+      ><a name="1934"
+      > </a
+      ><a name="1935" href="Convertibility.html#1935" class="Bound"
+      >&#915;</a
+      ><a name="1936" class="Symbol"
+      >}</a
+      ><a name="1937"
+      > </a
+      ><a name="1938" class="Symbol"
+      >(</a
+      ><a name="1939" href="Convertibility.html#1939" class="Bound"
+      >d</a
+      ><a name="1940"
+      > </a
+      ><a name="1941" class="Symbol"
+      >{</a
+      ><a name="1942" href="Convertibility.html#1942" class="Bound"
+      >d&#8242;</a
+      ><a name="1944"
+      > </a
+      ><a name="1945" href="Convertibility.html#1945" class="Bound"
+      >d&#8243;</a
+      ><a name="1947" class="Symbol"
+      >}</a
+      ><a name="1948"
+      > </a
+      ><a name="1949" class="Symbol"
+      >:</a
+      ><a name="1950"
+      > </a
+      ><a name="1951" href="Convertibility.html#1935" class="Bound"
+      >&#915;</a
+      ><a name="1952"
+      > </a
+      ><a name="1953" href="Syntax.html#437" class="Datatype Operator"
+      >&#8866;</a
+      ><a name="1954"
+      > </a
+      ><a name="1955" href="Convertibility.html#1933" class="Bound"
+      >A</a
+      ><a name="1956" class="Symbol"
+      >)</a
+      ><a name="1957"
+      > </a
+      ><a name="1958" class="Symbol"
+      >&#8594;</a
+      ><a name="1959"
+      > </a
+      ><a name="1960" href="Convertibility.html#1939" class="Bound"
+      >d</a
+      ><a name="1961"
+      > </a
+      ><a name="1962" href="Convertibility.html#98" class="Datatype Operator"
+      >&#8801;&#7517;&#7505;</a
+      ><a name="1965"
+      > </a
+      ><a name="1966" href="Convertibility.html#1942" class="Bound"
+      >d&#8242;</a
+      ><a name="1968"
+      > </a
+      ><a name="1969" class="Symbol"
+      >&#8594;</a
+      ><a name="1970"
+      > </a
+      ><a name="1971" href="Convertibility.html#1942" class="Bound"
+      >d&#8242;</a
+      ><a name="1973"
+      > </a
+      ><a name="1974" href="Convertibility.html#98" class="Datatype Operator"
+      >&#8801;&#7517;&#7505;</a
+      ><a name="1977"
+      > </a
+      ><a name="1978" href="Convertibility.html#1945" class="Bound"
+      >d&#8243;</a
+      ><a name="1980"
+      > </a
+      ><a name="1981" class="Symbol"
+      >&#8594;</a
+      ><a name="1982"
+      > </a
+      ><a name="1983" href="Convertibility.html#1939" class="Bound"
+      >d</a
+      ><a name="1984"
+      > </a
+      ><a name="1985" href="Convertibility.html#98" class="Datatype Operator"
+      >&#8801;&#7517;&#7505;</a
+      ><a name="1988"
+      > </a
+      ><a name="1989" href="Convertibility.html#1945" class="Bound"
+      >d&#8243;</a
+      ><a name="1991"
+      >
+  </a
+      ><a name="1994" href="Convertibility.html#1994" class="Bound"
+      >d</a
+      ><a name="1995"
+      > </a
+      ><a name="1996" href="Convertibility.html#1919" class="Function Operator"
+      >&#8801;&#7517;&#7505;&#10216;</a
+      ><a name="2000"
+      > </a
+      ><a name="2001" href="Convertibility.html#2001" class="Bound"
+      >p</a
+      ><a name="2002"
+      > </a
+      ><a name="2003" href="Convertibility.html#1919" class="Function Operator"
+      >&#10217;</a
+      ><a name="2004"
+      > </a
+      ><a name="2005" href="Convertibility.html#2005" class="Bound"
+      >q</a
+      ><a name="2006"
+      > </a
+      ><a name="2007" class="Symbol"
+      >=</a
+      ><a name="2008"
+      > </a
+      ><a name="2009" href="Convertibility.html#188" class="InductiveConstructor"
+      >trans&#8801;&#7517;&#7505;</a
+      ><a name="2017"
+      > </a
+      ><a name="2018" href="Convertibility.html#2001" class="Bound"
+      >p</a
+      ><a name="2019"
+      > </a
+      ><a name="2020" href="Convertibility.html#2005" class="Bound"
+      >q</a
+      ><a name="2021"
+      >
+
+  </a
+      ><a name="2025" class="Keyword"
+      >infix</a
+      ><a name="2030"
+      > </a
+      ><a name="2031" class="Number"
+      >3</a
+      ><a name="2032"
+      > </a
+      ><a name="2033" href="Convertibility.html#2041" class="Function Operator"
+      >_&#8718;&#8801;&#7517;&#7505;</a
+      ><a name="2038"
+      >
+  </a
+      ><a name="2041" href="Convertibility.html#2041" class="Function Operator"
+      >_&#8718;&#8801;&#7517;&#7505;</a
+      ><a name="2046"
+      > </a
+      ><a name="2047" class="Symbol"
+      >:</a
+      ><a name="2048"
+      > </a
+      ><a name="2049" class="Symbol"
+      >&#8704;</a
+      ><a name="2050"
+      > </a
+      ><a name="2051" class="Symbol"
+      >{</a
+      ><a name="2052" href="Convertibility.html#2052" class="Bound"
+      >A</a
+      ><a name="2053"
+      > </a
+      ><a name="2054" href="Convertibility.html#2054" class="Bound"
+      >&#915;</a
+      ><a name="2055" class="Symbol"
+      >}</a
+      ><a name="2056"
+      > </a
+      ><a name="2057" class="Symbol"
+      >(</a
+      ><a name="2058" href="Convertibility.html#2058" class="Bound"
+      >d</a
+      ><a name="2059"
+      > </a
+      ><a name="2060" class="Symbol"
+      >:</a
+      ><a name="2061"
+      > </a
+      ><a name="2062" href="Convertibility.html#2054" class="Bound"
+      >&#915;</a
+      ><a name="2063"
+      > </a
+      ><a name="2064" href="Syntax.html#437" class="Datatype Operator"
+      >&#8866;</a
+      ><a name="2065"
+      > </a
+      ><a name="2066" href="Convertibility.html#2052" class="Bound"
+      >A</a
+      ><a name="2067" class="Symbol"
+      >)</a
+      ><a name="2068"
+      > </a
+      ><a name="2069" class="Symbol"
+      >&#8594;</a
+      ><a name="2070"
+      > </a
+      ><a name="2071" href="Convertibility.html#2058" class="Bound"
+      >d</a
+      ><a name="2072"
+      > </a
+      ><a name="2073" href="Convertibility.html#98" class="Datatype Operator"
+      >&#8801;&#7517;&#7505;</a
+      ><a name="2076"
+      > </a
+      ><a name="2077" href="Convertibility.html#2058" class="Bound"
+      >d</a
+      ><a name="2078"
+      >
+  </a
+      ><a name="2081" href="Convertibility.html#2041" class="Function Operator"
+      >_&#8718;&#8801;&#7517;&#7505;</a
+      ><a name="2086"
+      > </a
+      ><a name="2087" class="Symbol"
+      >_</a
+      ><a name="2088"
+      > </a
+      ><a name="2089" class="Symbol"
+      >=</a
+      ><a name="2090"
+      > </a
+      ><a name="2091" href="Convertibility.html#144" class="InductiveConstructor"
+      >refl&#8801;&#7517;&#7505;</a
+      ><a name="2098"
+      >
+
+</a
+      ><a name="2100" class="Keyword"
+      >open</a
+      ><a name="2104"
+      > </a
+      ><a name="2105" href="Convertibility.html#1579" class="Module"
+      >&#8801;&#7517;&#7505;-Reasoning</a
+      ><a name="2118"
+      > </a
+      ><a name="2119" class="Keyword"
+      >public</a
+      ><a name="2125"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>
