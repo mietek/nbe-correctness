@@ -28,47 +28,115 @@ module _ {{_ : Model}} where
 -- TODO: Naming things.
 
 module _ {{_ : Model}} where
-  lem∪ : ∀ {C Γ w} → (i : C ∈ Γ) → w ⊩⋆ Γ ∖ i → w ⊩ C → w ⊩⋆ Γ
-  lem∪ top     γ       t = γ , t
-  lem∪ (pop i) (γ , s) t = lem∪ i γ t , s
+  plug : ∀ {C Γ w} → (i : C ∈ Γ) → w ⊩⋆ Γ ∖ i → w ⊩ C → w ⊩⋆ Γ
+  plug top     γ       s = γ , s
+  plug (pop i) (γ , r) s = plug i γ s , r
 
   ⟦_≔_⟧ : ∀ {C Γ w} → (i : C ∈ Γ) → w ⟪ Γ ∖ i ⊫ C ⟫ →
           ∀ {A} → (∀ {w′} → w′ ⟪ Γ ⊫ A ⟫) → w ⟪ Γ ∖ i ⊫ A ⟫
-  ⟦ i ≔ ⟪c⟫ ⟧ ⟪d⟫ = λ γ → ⟪d⟫ (lem∪ i γ (⟪c⟫ γ))
+  ⟦ i ≔ ⟪c⟫ ⟧ ⟪d⟫ = λ γ → ⟪d⟫ (plug i γ (⟪c⟫ γ))
 
 
   -- TODO: The var case in lem≔.
 
   postulate
     oops≔var₁ : ∀ {C Γ w} → (i : C ∈ Γ) (⟪c⟫ : w ⟪ Γ ∖ i ⊫ C ⟫) (γ : w ⊩⋆ Γ ∖ i) →
-                ⟪var⟫ {C} i (lem∪ i γ (⟪c⟫ γ)) ≡ ⟪c⟫ γ
+                ⟪var⟫ {C} i (plug i γ (⟪c⟫ γ)) ≡ ⟪c⟫ γ
   -- oops≔var₁ top     ⟪c⟫ γ       = refl
   -- oops≔var₁ (pop i) ⟪c⟫ (γ , s) = {!!}
 
   postulate
     oops≔var₂ : ∀ {A C Γ w} → (i : C ∈ Γ) (⟪c⟫ : w ⟪ Γ ∖ i ⊫ C ⟫) (j : A ∈ Γ ∖ i) (γ : w ⊩⋆ Γ ∖ i) →
-                ⟪var⟫ {A} (mono∈ (thin⊆ i) j) (lem∪ i γ (⟪c⟫ γ)) ≡ ⟪var⟫ {A} j γ
+                ⟪var⟫ {A} (mono∈ (thin⊆ i) j) (plug i γ (⟪c⟫ γ)) ≡ ⟪var⟫ {A} j γ
   -- oops≔var₂ top     ⟪c⟫ j γ       = cong² ⟪var⟫ (idmono∈ j) refl
   -- oops≔var₂ (pop i) ⟪c⟫ j (γ , s) = {!!}
 
   oops≔var : ∀ {A C Γ w} → (i : C ∈ Γ) (⟪c⟫ : w ⟪ Γ ∖ i ⊫ C ⟫) (j : A ∈ Γ) →
              ⟦ i ≔ ⟪c⟫ ⟧ {A} (⟪var⟫ {A} j) ≡ ⟦ i ≔ ⟪c⟫ ⟧∈ {A} j
   oops≔var i ⟪c⟫ j  with i ≟∈ j
-  oops≔var i ⟪c⟫ .i | same   = funext λ γ → oops≔var₁ i ⟪c⟫ γ
-  oops≔var i ⟪c⟫ ._ | diff j = funext λ γ → oops≔var₂ i ⟪c⟫ j γ
+  oops≔var i ⟪c⟫ .i | same   = funext (λ γ → oops≔var₁ i ⟪c⟫ γ)
+  oops≔var i ⟪c⟫ ._ | diff j = funext (λ γ → oops≔var₂ i ⟪c⟫ j γ)
 
 
   -- TODO: The lam case in lem≔.
 
+  lem₁ : ∀ {C Γ w w′} → (i : C ∈ Γ) (γ : w ⊩⋆ Γ ∖ i) (s : w ⊩ C) (p : w ≤ w′) →
+         mono⊩⋆ p (plug i γ s) ≡ plug i (mono⊩⋆ p γ) (mono⊩ {C} p s)
+  lem₁ top     γ       s p = refl
+  lem₁ (pop i) (γ , r) s p = cong² _,_ (lem₁ i γ s p) refl
+
+  mutual
+    postulate
+      lem₂ : ∀ {A Γ w w′} → (p : w ≤ w′) (d : Γ ⊢ A) (γ : w ⊩⋆ Γ) →
+             mono⊩ {A} p (eval d γ) ≡ eval d (mono⊩⋆ p γ)
+    -- lem₂ p (var {A} j)        γ = {!!}
+    -- lem₂ p (lam {A} {B} d)    γ = {!!}
+    -- lem₂ p (app {A} {B} d e)  γ = {!!}
+    -- lem₂ p (pair {A} {B} d e) γ = lem₂pair p d e γ
+    -- lem₂ p (fst {A} {B} d)    γ = lem₂fst p d γ
+    -- lem₂ p (snd {A} {B} d)    γ = lem₂snd p d γ
+    -- lem₂ p unit               γ = refl
+
+    lem₂pair : ∀ {A B Γ w w′} → (p : w ≤ w′) (d : Γ ⊢ A) (e : Γ ⊢ B) (γ : w ⊩⋆ Γ) →
+               mono⊩ {A ⩕ B} p (⟪pair⟫ {A} {B} (eval d) (eval e) γ) ≡ ⟪pair⟫ {A} {B} (eval d) (eval e) (mono⊩⋆ p γ)
+    lem₂pair {A} {B} p d e γ =
+      begin
+        mono⊩ {A ⩕ B} p (⟪pair⟫ {A} {B} (eval d) (eval e) γ)
+      ≡⟨⟩
+        ⟪pair⟫ {A} {B} (λ γ′ → mono⊩ {A} p (eval d γ)) (λ γ′ → mono⊩ {B} p (eval e γ)) (mono⊩⋆ p γ)
+      ≡⟨ cong² (λ ⟪d⟫ ⟪e⟫ → ⟪pair⟫ {A} {B} ⟪d⟫ ⟪e⟫ (mono⊩⋆ p γ)) (funext (λ γ′ → lem₂ p d γ)) (funext (λ γ′ → lem₂ p e γ)) ⟩
+        ⟪pair⟫ {A} {B} (λ γ′ → eval d (mono⊩⋆ p γ)) (λ γ′ → eval e (mono⊩⋆ p γ)) (mono⊩⋆ p γ)
+      ≡⟨⟩
+        ⟪pair⟫ {A} {B} (eval d) (eval e) (mono⊩⋆ p γ)
+      ∎
+
+    lem₂fst : ∀ {A B Γ w w′} → (p : w ≤ w′) (d : Γ ⊢ A ⩕ B) (γ : w ⊩⋆ Γ) →
+              mono⊩ {A} p (⟪fst⟫ {A} {B} (eval d) γ) ≡ ⟪fst⟫ {A} {B} (eval d) (mono⊩⋆ p γ)
+    lem₂fst {A} {B} p d γ =
+      begin
+        mono⊩ {A} p (⟪fst⟫ {A} {B} (eval d) γ)
+      ≡⟨⟩
+        ⟪fst⟫ {A} {B} (λ γ′ → mono⊩ {A ⩕ B} p (eval d γ)) (mono⊩⋆ p γ)
+      ≡⟨ cong (λ ⟪d⟫ → ⟪fst⟫ {A} {B} ⟪d⟫ (mono⊩⋆ p γ)) (funext (λ γ′ → lem₂ p d γ)) ⟩
+        ⟪fst⟫ {A} {B} (λ γ′ → eval d (mono⊩⋆ p γ)) (mono⊩⋆ p γ)
+      ≡⟨⟩
+        ⟪fst⟫ {A} {B} (eval d) (mono⊩⋆ p γ)
+      ∎
+
+    lem₂snd : ∀ {A B Γ w w′} → (p : w ≤ w′) (d : Γ ⊢ A ⩕ B) (γ : w ⊩⋆ Γ) →
+              mono⊩ {B} p (⟪snd⟫ {A} {B} (eval d) γ) ≡ ⟪snd⟫ {A} {B} (eval d) (mono⊩⋆ p γ)
+    lem₂snd {A} {B} p d γ =
+      begin
+        mono⊩ {B} p (⟪snd⟫ {A} {B} (eval d) γ)
+      ≡⟨⟩
+        ⟪snd⟫ {A} {B} (λ γ′ → mono⊩ {A ⩕ B} p (eval d γ)) (mono⊩⋆ p γ)
+      ≡⟨ cong (λ ⟪d⟫ → ⟪snd⟫ {A} {B} ⟪d⟫ (mono⊩⋆ p γ)) (funext (λ γ′ → lem₂ p d γ)) ⟩
+        ⟪snd⟫ {A} {B} (λ γ′ → eval d (mono⊩⋆ p γ)) (mono⊩⋆ p γ)
+      ≡⟨⟩
+        ⟪snd⟫ {A} {B} (eval d) (mono⊩⋆ p γ)
+      ∎
+
+
   postulate
-    oops≔lam₁ : ∀ {A B C Γ w w′} → (i : C ∈ Γ) (c : Γ ∖ i ⊢ C) (d : Γ , A ⊢ B) (γ : w ⊩⋆ Γ ∖ i) (p : w ≤ w′) (s : w′ ⊩ A) →
-                eval d (mono⊩⋆ p (lem∪ i γ (eval c γ)) , s) ≡ eval d (lem∪ i (mono⊩⋆ p γ) (eval (mono⊢ (weak⊆ {A = A}) c) (mono⊩⋆ p γ , s)) , s)
-  -- oops≔lam₁ i c d γ p s = {!!}
+    oops≔lam₂ : ∀ {A C Γ w w′} → (i : C ∈ Γ) (c : Γ ∖ i ⊢ C) (γ : w ⊩⋆ Γ ∖ i) (p : w ≤ w′) (s : w′ ⊩ A) →
+                mono⊩ {C} p (eval c γ) ≡ eval (mono⊢ (weak⊆ {A = A}) c) (mono⊩⋆ p γ , s)
+  -- oops≔lam₂ i c γ p s = {!!}
+
+  oops≔lam₁ : ∀ {A B C Γ w w′} → (i : C ∈ Γ) (c : Γ ∖ i ⊢ C) (d : Γ , A ⊢ B) (γ : w ⊩⋆ Γ ∖ i) (p : w ≤ w′) (s : w′ ⊩ A) →
+              eval d (mono⊩⋆ p (plug i γ (eval c γ)) , s) ≡ eval d (plug i (mono⊩⋆ p γ) (eval (mono⊢ (weak⊆ {A = A}) c) (mono⊩⋆ p γ , s)) , s)
+  oops≔lam₁ {A} {B} {C} i c d γ p s =
+    begin
+      eval d (mono⊩⋆ p (plug i γ (eval c γ)) , s)
+    ≡⟨ cong (eval d) (cong² _,_ (lem₁ i γ (eval c γ) p) refl) ⟩
+      eval d (plug i (mono⊩⋆ p γ) (mono⊩ {C} p (eval c γ)) , s)
+    ≡⟨ cong (eval d) (cong² _,_ (cong² (plug i) refl (oops≔lam₂ i c γ p s)) refl) ⟩
+      eval d (plug i (mono⊩⋆ p γ) (eval (mono⊢ weak⊆ c) (mono⊩⋆ p γ , s)) , s)
+    ∎
 
   oops≔lam : ∀ {A B C Γ w} → (i : C ∈ Γ) (c : Γ ∖ i ⊢ C) (d : Γ , A ⊢ B) →
              ⟦ i ≔ eval c {w} ⟧ {A ⇒ B} (⟪lam⟫ {A} {B} (eval d)) ≡
                ⟪lam⟫ {A} {B} (⟦ pop {A = C} {B = A} i ≔ eval (mono⊢ (weak⊆ {A = A}) c) ⟧ {B} (eval d))
-  oops≔lam i c d = funext λ γ → ⟨funext⟩ λ {w′} → funext λ p → funext λ s → oops≔lam₁ i c d γ p s
+  oops≔lam i c d = funext (λ γ → ⟨funext⟩ (funext (λ p → funext (λ s → oops≔lam₁ i c d γ p s))))
 
 
   mutual
